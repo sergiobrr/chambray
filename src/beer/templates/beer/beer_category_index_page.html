@@ -1,0 +1,35 @@
+{% extends 'beer/base_beer.html' %}
+
+{% block content %}
+<h1 class="display-2">
+  {{ page.title }}
+</h1>
+{% for category_page in page.get_children %}
+<div>
+  <h2>
+    {{ category_page.title }}
+  </h2>
+  {% for beer in category_page.get_children %}
+  <h3>{{ beer.title }}???????</h3>
+  <h2>{{ beer.beer }}==================</h2>
+  {% endfor %}
+  {% if category_page.category %}
+  <h2>E la la...</h2>
+  <h3>{{ category_page.category.name }}</h3>
+  {% else %}
+  <h3>E che cazzo.......</h3>
+  {% endif %}
+  <a href="{{ category_page.url }}">{{ category_page.title }}</a>
+  {{ category_page.get_dict }}
+</div>
+{% endfor %}
+<hr>
+{% for desc in page.get_descendants %}
+<p>{{ desc.title }}</p>
+<p>---------------{{ desc.specific }}----------{{ page.specific }}</p>
+{% if desc.category %}
+  <h1>{{ desc.category.name }}</h1>
+{% endif %}
+{% endfor %}
+
+{% endblock content %}

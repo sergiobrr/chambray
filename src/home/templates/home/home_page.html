@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static wagtailimages_tags wagtailschemaorg_tags %}
+
+{% block body_class %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="owl-carousel">
+  {% for slide in page.get_collection_images %}
+  <div class="home-slide-container owl-slide d-flex align-items-center cover">
+    {% image slide fill-1980x1020 as slide_image %}
+    <img src="{{ slide_image.url }}" alt="{{ slide.title }}"
+        class="home-slide">
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+$(document).ready(function(){
+  console.log('London calling...');
+  $(".owl-carousel").owlCarousel({
+    items: 1,
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: {{ page.slide_interval }}000,
+    autoplaySpeed: true,
+    nav: false
+  });
+});
+</script>
+{% endblock extra_js %}
