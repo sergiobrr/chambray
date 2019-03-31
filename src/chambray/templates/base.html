@@ -32,10 +32,13 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %}
-
-        {% block content %}{% endblock %}
-
+        <div class="wrapper">
+            <div id="content">
+                {% wagtailuserbar %}
+                {% block content %}{% endblock %}
+            </div>
+            {% include 'sidenav_primary.html' %}
+        </div>
         {# BOOTSTRAP #}
         <script
           src="http://code.jquery.com/jquery-3.3.1.min.js"

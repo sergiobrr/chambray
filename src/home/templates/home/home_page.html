@@ -9,6 +9,9 @@
 {% endblock extra_css %}
 
 {% block content %}
+<div id="sidebarCollapse" class="btn-navbar-toggler">
+    <i class="fas fa-bars fa-4x" style="color: #fff;"></i>
+</div>
 <div class="owl-carousel">
   {% for slide in page.get_collection_images %}
   <div class="home-slide-container owl-slide d-flex align-items-center cover">
@@ -24,7 +27,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script>
 $(document).ready(function(){
-  console.log('London calling...');
   $(".owl-carousel").owlCarousel({
     items: 1,
     loop: true,

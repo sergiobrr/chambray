@@ -243,9 +243,6 @@ class BeerCategoryPage(MetadataPageMixin, Page):
  	subpage_types = ['beer.BeerPage', ]
 
  	def get_dict(self):
- 		print('########################')
- 		print(self.__dict__)
- 		print('########################')
  		return self.__dict__
 
 

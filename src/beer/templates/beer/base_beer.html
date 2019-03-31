@@ -1,8 +1,15 @@
 {% extends "base.html" %}
-
+{% load static %}
 
 {% block body_class %}{% endblock %}
 
+{% block content %}
+  {% include 'navbar_primary.html' %}
+  <div class="detail-container">
+    {% block content_detail %}
+    {% endblock content_detail %}
+  </div>
+{% endblock content %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.4/fullpage.min.css">

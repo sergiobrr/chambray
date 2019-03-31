@@ -1,0 +1,12 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div style="width: 100%; position: relative;" class="text-center">
+  <h2>
+    {{ the_beer.name }}
+  </h2>
+  {% image the_beer.label fill-500x300 as the_label  %}
+  <img src="{{ the_label.url }}" />
+  <h4>
+    {{ the_beer.claim }}
+  </h4>
+</div>

@@ -1,0 +1,11 @@
+{% load static wagtailcore_tags menu_tags %}
+
+<nav class="navbar fixed-top navbar-expand-lg">
+  <a class="navbar-brand" href="{{ request.site.root_url }}">
+    <img src="{% static 'img/logotype_positivo.png' %}" alt="Lord Chambray logotype"
+      class="navbar-brand-image">
+  </a>
+  <div id="sidebarCollapse" class="btn-navbar-toggler">
+      <i class="fas fa-bars fa-4x"></i>
+  </div>
+</nav>
