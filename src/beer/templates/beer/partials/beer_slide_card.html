@@ -1,12 +1,60 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<div style="width: 100%; position: relative;" class="text-center">
-  <h2>
-    {{ the_beer.name }}
-  </h2>
-  {% image the_beer.label fill-500x300 as the_label  %}
-  <img src="{{ the_label.url }}" />
-  <h4>
-    {{ the_beer.claim }}
-  </h4>
+<div class="text-center beer-card-content">
+  {% include 'beer/partials/arrow.html' with the_color=the_beer.contrast_background %}
+  <div class="beer-card-details align-items-center">
+      {% if the_beer.bottle_image %}
+      {% image the_beer.bottle_image width-180 as the_bottle %}
+      <img {{ the_bottle.attrs }} class="bottle-card-image">
+      {% else %}
+      {% image the_beer.tap_image width-400 as the_tap %}
+      <img {{ the_tap.attrs }} class="tap-card-image">
+      {% endif %}
+      <div class="row align-items-center row-card-details">
+        <div class="col-sm-6 offset-sm-3 text-center justify-content-center">
+          <h2 class="text-light text-uppercase">
+            {{ the_beer.name }}
+          </h2>
+          <h3 class="text-light text-uppercase">
+            {{ the_beer.claim }}
+          </h3>
+          <div class="row align-items-center justify-content-center">
+            <div class="col-sm-2 offset-sm-1 text-light justify-content-center">
+              <div class="row alc-row">
+                <div class="col text-left">
+                  <span class="alchol-spec">
+                    ALC.
+                  </span>
+                </div>
+              </div>
+              <div class="row alc-row-center">
+                <div class="col text-center">
+                  <span class="alchol-details">
+                    {{ the_beer.alcoholic_content }}
+                  </span>
+                </div>
+              </div>
+              <div class="row alc-row">
+                <div class="col text-right">
+                  <span class="alchol-spec">
+                    VOL.
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-8 justify-content-center">
+              {% image the_beer.label width-300 as the_label %}
+              <img {{ the_label.attrs }} class="label-detail-image">
+            </div>
+          </div>
+          <div class="row align-items-center justify-content-center">
+            <div class="col align-items-center justify-content-center">
+              <p class="description-details text-light text-justify text-uppercase">
+                {{ the_beer.short_description }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
 </div>

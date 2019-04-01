@@ -2,15 +2,18 @@
 {% load static i18n wagtailcore_tags wagtailimages_tags %}
 
 {% block content_detail %}
-<ul id="the_menu">
-  {% for cat_page in page.get_children %}
-  <li data-menuanchor="{{ cat_page.slug }}">
-    <a href="#{{ cat_page.slug }}">
-      {{ cat_page.title }}
-    </a>
-  </li>
-  {% endfor %}
-</ul>
+<div class="the_menu-container text-center text-uppercase">
+  <ul id="the_menu">
+    {% for cat_page in page.get_children %}
+    <li data-menuanchor="{{ cat_page.slug }}">
+      <a href="#{{ cat_page.slug }}">
+        {{ cat_page.title }}
+      </a>
+    </li>
+    {% if not forloop.last %}<span class="li-divider">/</span>{% endif %} 
+    {% endfor %}
+  </ul>
+</div>
 
 <div id="fullpage">
   {% for cat_page in page.get_children %}
@@ -19,18 +22,6 @@
     {% for beer in category_page.category.beers.all %}
     <div class="slide">
       {% include 'beer/partials/beer_slide_card.html' with the_beer=beer %}
-      {% comment %}
-      <div style="width: 100%; position: relative;" class="text-center">
-        <h2>
-          {{ beer.name }}
-        </h2>
-        {% image beer.label fill-500x300 as the_label  %}
-        <img src="{{ the_label.url }}" />
-        <h4>
-          {{ beer.claim }}
-        </h4>
-      </div>
-      {% endcomment %}
     </div>
     {% endfor %}
     {% endwith %}
@@ -45,7 +36,7 @@ $(document).ready(function() {
   $('#fullpage').fullpage({
     //options here
     licenseKey: '25D47858-8B724D06-B213CC41-2AF74BEE',
-    sectionsColor: ['#f2f2f2', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+    sectionsColor: ['#fff'],
     autoScrolling:true,
     anchors: [{% for category_page in page.get_children %}'{{ category_page.slug }}'{% if not forloop.last %},{% endif %}{% endfor %}],
     loopBottom: true,

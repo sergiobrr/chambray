@@ -5,6 +5,7 @@ from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel,\
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtailmetadata.models import MetadataPageMixin, MetadataMixin
+from colorful.fields import RGBColorField
 
 # Create your models here.
 
@@ -96,9 +97,17 @@ class Beer(models.Model):
 		on_delete=models.SET_NULL,
 		related_name='+'
 	)
+	contrast_background = RGBColorField(
+		default='#FBD872',
+		verbose_name='Color used to contrast photos and graphics'
+	)
 	has_polykeg = models.BooleanField(
 		default=False, 
 		verbose_name='Polikeg available'
+	)
+	short_description = models.TextField(
+		verbose_name='Short description',
+		default='Short description goes here'
 	)
 	start_availability = models.DateField(auto_now=False,
 		auto_now_add=False,
@@ -169,9 +178,11 @@ class Beer(models.Model):
 	panels = [
 		FieldPanel('name', classname='title'),
 		FieldRowPanel([
-			FieldPanel('beer_category', classname='col6'),
-			FieldPanel('claim', classname='col6')
+			FieldPanel('beer_category', classname='col4'),
+			FieldPanel('claim', classname='col4'),		
+			FieldPanel('contrast_background', classname='col4')
 		]),
+		FieldPanel('short_description', classname='full'),
 		DocumentChooserPanel('spec_sheet'),
 		ImageChooserPanel('bottle_image'),
 		ImageChooserPanel('glass_image'),

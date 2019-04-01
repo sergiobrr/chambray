@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
     'phonenumber_field',
+    'colorful',
 
     'django.contrib.admin',
     'django.contrib.auth',

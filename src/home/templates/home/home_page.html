@@ -12,6 +12,9 @@
 <div id="sidebarCollapse" class="btn-navbar-toggler">
     <i class="fas fa-bars fa-4x" style="color: #fff;"></i>
 </div>
+{% image page.logo_image original as the_logo %}
+<img {{ the_logo.attrs }} class="big-logo"
+    style="left: calc((100vw - {{ the_logo.width }}px) / 2); top:calc((100vh - {{ the_logo.height }}px) / 2);">
 <div class="owl-carousel">
   {% for slide in page.get_collection_images %}
   <div class="home-slide-container owl-slide d-flex align-items-center cover">
