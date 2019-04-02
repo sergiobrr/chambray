@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'wagtailerrorpages',
     'wagtailcache',
     'django.contrib.sitemaps',
+    'compressor',
 ]
 
 MIDDLEWARE = [

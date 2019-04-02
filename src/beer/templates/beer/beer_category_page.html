@@ -2,14 +2,27 @@
 {% load static i18n wagtailcore_tags wagtailimages_tags %}
 
 
-{% block content %}
-<a href="{{ page.get_parent.url }}">Back</a>
-<h1>{{ page.title }}</h1>
-<h2>{{ page.category.name }}</h2>
-{% for beer in page.category.beers.all %}
-  <h3>{{ beer.name  }}</h3>
-  {% image beer.label width-400 as label %}
-  <img src="{{ label.url }}" alt="{{ label.name }}">
-{% endfor %}
-{{ page.get_dict }}
-{% endblock content %}
+{% block content_detail %}
+<div id="fullpage">
+  <div class="section">
+    {% for beer in page.category.beers.all %}
+    <div class="slide">
+      {% include 'beer/partials/beer_slide_card.html' with the_beer=beer %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content_detail %}
+
+{% block extrascript %}
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#fullpage').fullpage({
+    //options here
+    licenseKey: '25D47858-8B724D06-B213CC41-2AF74BEE',
+    sectionsColor: ['#fff'],
+    autoScrolling:true
+  });
+});
+</script>
+{% endblock extrascript %}

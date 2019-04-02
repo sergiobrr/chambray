@@ -1,4 +1,4 @@
-{% load static wagtailuserbar wagtailschemaorg_tags %}
+{% load static wagtailuserbar wagtailschemaorg_tags compress %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -25,7 +25,9 @@
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
         {# Global stylesheets #}
+        {% compress css %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/chambray.css' %}">
+        {% endcompress %}
         {% ld_for_site %}
         {% block jsonld_block %}
         {% endblock jsonld_block %}
@@ -50,6 +52,10 @@
             {# Override this in templates to add extra javascript #}
         {% endblock %}
         {# Global javascript #}
+        {% comment %}
+        {% compress js %}
         <script type="text/javascript" src="{% static 'js/chambray.js' %}"></script>
+        {% endcompress %}
+        {% endcomment %}
     </body>
 </html>

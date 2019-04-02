@@ -19,6 +19,16 @@
 {% block extra_js %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.4/vendors/scrolloverflow.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.4/fullpage.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('#sidebarCollapse').on('click',function(){
+    $('#main-sidebar').toggleClass('active');
+  });
+  $('#closer-btn').on('click',function(){
+    $('#main-sidebar').toggleClass('active');
+  });
+});
+</script>
   {% block extrascript %}
   {% endblock extrascript %}
 {% endblock extra_js %}

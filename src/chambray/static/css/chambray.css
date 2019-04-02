@@ -11,7 +11,15 @@ body {
 }
 
 .lrd-hidden {
-  visibility: hidden;
+  visibility: hidden !important;
+}
+
+.owl-carousel {
+  -webkit-transition: all 0.3s ease;                  
+  -moz-transition: all 0.3s ease;                 
+  -o-transition: all 0.3s ease;   
+  -ms-transition: all 0.3s ease;          
+  transition: all 0.3s ease;
 }
 
 .navbar-brand-image {
@@ -42,6 +50,7 @@ body {
     color: #fff;
     transition: all 0.3s;
     min-height: 100vh;
+    z-index: 1050;
 }
 #main-sidebar.active{
   margin-right: -500px;
@@ -115,10 +124,18 @@ ul.menu-list li {
   margin-top: 20px;
 }
 /* END SIDENAV */
+.blue-background {
+  background-color: #002b96!important
+}
 
 .ristretto {
   width: calc(100vw - 500px);
   height: 100vh !important;
+  -webkit-transition: all 0.4s ease;                  
+  -moz-transition: all 0.4s ease;                 
+  -o-transition: all 0.4s ease;   
+  -ms-transition: all 0.4s ease;          
+  transition: all 0.4s ease;
 }
 
 div.ristretto img {
@@ -246,4 +263,8 @@ div.beer-card-content svg {
 }
 .alchol-spec {
   font-weight: 700;
+}
+
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+    background: #dd7a0e;
 }

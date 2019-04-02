@@ -1,11 +1,14 @@
 {% extends "base.html" %}
-{% load static wagtailimages_tags wagtailschemaorg_tags %}
+{% load static wagtailimages_tags wagtailschemaorg_tags compress %}
 
 {% block body_class %}{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+{% compress css %}
+<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+{% endcompress %}
 {% endblock extra_css %}
 
 {% block content %}
@@ -15,13 +18,11 @@
 {% image page.logo_image original as the_logo %}
 <img {{ the_logo.attrs }} class="big-logo"
     style="left: calc((100vw - {{ the_logo.width }}px) / 2); top:calc((100vh - {{ the_logo.height }}px) / 2);">
-<div class="owl-carousel">
+<div class="owl-carousel lrd-hidden">
   {% for slide in page.get_collection_images %}
-  <div class="home-slide-container owl-slide d-flex align-items-center cover">
     {% image slide fill-1980x1020 as slide_image %}
-    <img src="{{ slide_image.url }}" alt="{{ slide.title }}"
-        class="home-slide">
-  </div>
+    <img data-src="{{ slide_image.url }}" alt="{{ slide.title }}"
+        class="owl-lazy home-slide">
   {% endfor %}
 </div>
 {% endblock content %}
@@ -30,13 +31,47 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script>
 $(document).ready(function(){
-  $(".owl-carousel").owlCarousel({
+  var carousel = $(".owl-carousel");
+  carousel.on({
+    'initialized.owl.carousel': function () {
+      carousel.removeClass('lrd-hidden');
+    }
+  }).owlCarousel({
     items: 1,
+    lazyLoad: true,
     loop: true,
     autoplay: true,
     autoplayTimeout: {{ page.slide_interval }}000,
     autoplaySpeed: true,
-    nav: false
+    nav: false,
+    animateOut: 'slideOutLeft',
+    animateIn: 'slideInRight',
+    smartSpeed:450
+  });
+  var open = function() {
+    $('body').addClass('blue-background');
+    $('.owl-carousel').addClass('ristretto');
+    $('#main-sidebar').removeClass('active');
+  };
+  var close = function() {
+    $('#main-sidebar').addClass('active');
+    $('.owl-carousel').removeClass('ristretto');
+    setTimeout(function(){
+      $('body').removeClass('blue-background');
+    }, 300);
+  };
+  var toggle = function() {
+    if($('#main-sidebar').hasClass('active')) {
+      open();
+    } else {
+      close();
+    };
+  };
+  $('#sidebarCollapse').on('click',function(){
+    toggle();
+  });
+  $('#closer-btn').on('click',function(){
+    toggle();
   });
 });
 </script>

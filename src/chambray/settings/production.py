@@ -63,17 +63,20 @@ BASE_URL = 'https://www.lordchambray.com.mt'
 
 TAGGIT_CASE_INSENSITIVE = True
 
-COMPRESS_JS_FILTERS = [
-    'compressor.filters.jsmin.JSMinFilter',
-]
-
-COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
-
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder'
 ]
+
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.jsmin.JSMinFilter',
+]
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter', 
+    'compressor.filters.cssmin.rCSSMinFilter'
+]
+COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
 
 COMPRESS_OUTPUT_DIR = 'compressed'
 GZIP_CONTENT_TYPES = (
