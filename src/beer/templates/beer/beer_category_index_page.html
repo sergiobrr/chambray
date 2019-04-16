@@ -40,9 +40,7 @@ $(document).ready(function() {
     autoScrolling:true,
     anchors: [{% for category_page in page.get_children %}'{{ category_page.slug }}'{% if not forloop.last %},{% endif %}{% endfor %}],
     loopBottom: true,
-    menu: '#the_menu',
-    navigation: true,
-    navigationPosition: 'right',
+    menu: '#the_menu'
   });
 });
 </script>

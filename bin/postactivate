@@ -1,0 +1,14 @@
+#!/bin/bash
+# This hook is sourced after this virtualenv is activated.
+export DB_NAME='chambray'
+export DB_USER='sergio'
+export DB_PASSWORD='pg'
+export DB_PORT=5432
+export DB_HOST='localhost'
+export MAPS_API_KEY='AIzaSyAoLeNOIg0jPXVyWf0i8HGV0W0AT551wDM'
+export DEV_SECRET_KEY='wxy7_@8d3kue$&%vd-6qf4u4w#!s-a(6ji!8*z56h8r==g-tn-'
+export PROD_SECRET_KEY='45bzn*7auikhtzb-aw1k+!7g10$)0&l4drodq6enhsf3c)nr3h'
+export SMTP_SERVER='smtp.gmail.com'
+export SMTP_PORT=587
+export SMTP_USER='assist.tecne@gmail.com'
+export SMTP_PASSWORD='m1n2b3v4!'
