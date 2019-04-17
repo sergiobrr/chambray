@@ -13,11 +13,15 @@
 
 {% block content %}
 <div id="sidebarCollapse" class="btn-navbar-toggler">
-    <i class="fas fa-bars fa-4x" style="color: #fff;"></i>
+    <i class="fas fa-bars fa-3x" style="color: #fff;"></i>
 </div>
 {% image page.logo_image original as the_logo %}
-<img {{ the_logo.attrs }} class="big-logo"
-    style="left: calc((100vw - {{ the_logo.width }}px) / 2); top:calc((100vh - {{ the_logo.height }}px) / 2);">
+<img {{ the_logo.attrs }} class="big-logo" id="logo-image"
+    style="left: calc((100vw - {{ the_logo.width }}px) / 2); top:calc((70vh - {{ the_logo.height }}px)/2);">
+<div id="tagline" class="tagline-text text-center"
+    style="bottom: 10vh;">
+  {{ page.body|safe }}
+</div>
 <div class="owl-carousel lrd-hidden">
   {% for slide in page.get_collection_images %}
     {% image slide fill-1980x1020 as slide_image %}
@@ -29,8 +33,11 @@
 
 {% block extra_js %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/2.0.5/velocity.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/2.0.5/velocity.ui.min.js"></script>
 <script>
 $(document).ready(function(){
+  var logo_width = $('#logo-image').attr('width') + 'px';
   var carousel = $(".owl-carousel");
   carousel.on({
     'initialized.owl.carousel': function () {
@@ -48,14 +55,26 @@ $(document).ready(function(){
     animateIn: 'slideInRight',
     smartSpeed:450
   });
+  console.log('ouuooi', 'pluto');
+  setTimeout(function(){
+    $('#tagline').velocity('zoomIn',{duration: 3000}, {loop: true});
+  }, 3000);
+  setTimeout(function(){
+    $('#tagline').css({visibility: 'visible'});
+  }, 3100);
+
   var open = function() {
     $('body').addClass('blue-background');
     $('.owl-carousel').addClass('ristretto');
     $('#main-sidebar').removeClass('active');
+    $('#logo-image').css({left: 'calc((100vw - ' + logo_width + ' - 450px) / 2)'});
+    $('#tagline').css({left: "calc(15% - 450px)"});
   };
   var close = function() {
     $('#main-sidebar').addClass('active');
     $('.owl-carousel').removeClass('ristretto');
+    $('#logo-image').css({left: 'calc((100vw - ' + logo_width + ') / 2)'});
+    $('#tagline').css({left: "15%"});
     setTimeout(function(){
       $('body').removeClass('blue-background');
     }, 300);

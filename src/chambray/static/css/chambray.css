@@ -1,49 +1,63 @@
-h1, h2, h3, h4, h5, h6, p, li, a {
-	font-family: 'Open Sans', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+a {
+    font-family: 'Open Sans', sans-serif;
 }
 
 i {
-	color: #002B96;
+    color: #002B96;
 }
 
 body {
-  overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 .lrd-hidden {
-  visibility: hidden !important;
+    visibility: hidden !important;
 }
 
 .owl-carousel {
-  -webkit-transition: all 0.3s ease;                  
-  -moz-transition: all 0.3s ease;                 
-  -o-transition: all 0.3s ease;   
-  -ms-transition: all 0.3s ease;          
-  transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .navbar-brand-image {
-	height: 96px;
+    height: 96px;
 }
+
 .btn-navbar-toggler {
-	position: absolute;
-	right: 32px;
-	top: 16px;
-  z-index: 10;
+    position: absolute;
+    right: 32px;
+    top: 16px;
+    z-index: 10;
 }
 
 .big-logo {
-  position: absolute;
-  z-index: 100000;
+    position: absolute;
+    z-index: 100000;
+    transition: all 0.3s;
 }
 
+
 /* SIDENAV SECTION */
+
 .wrapper {
     display: flex;
     width: 100vw;
     align-items: stretch;
 }
+
 #main-sidebar {
+    padding-top: 25vh;
     min-width: 500px;
     max-width: 500px;
     background: #002b96;
@@ -52,38 +66,42 @@ body {
     min-height: 100vh;
     z-index: 1050;
 }
-#main-sidebar.active{
-  margin-right: -500px;
+
+#main-sidebar.active {
+    margin-right: -500px;
 }
 
-#main-sidebar .sidebar-header{
-  padding: 20px;
-  background: #6d7fcc;
-}
-#main-sidebar ul.components{
-  padding: 20px 0px;
-  border-bottom: 1px solid #47748b;
+#main-sidebar .sidebar-header {
+    padding: 20px;
+    background: #6d7fcc;
 }
 
-#main-sidebar ul p{
-  padding: 10px;
-  font-size: 1.1em;
-  display: block;
+#main-sidebar ul.components {
+    padding: 20px 0px;
+    border-bottom: 1px solid #47748b;
 }
 
-#main-sidebar ul li a{
-  padding: 10px;
-  font-size: 1.1em;
-  display: block;
-  text-transform: uppercase;
-  color: #fff;
+#main-sidebar ul p {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
 }
+
+#main-sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    text-transform: uppercase;
+    color: #fff;
+}
+
 #main-sidebar ul li a.main:hover {
     color: #7386D5;
     background: #fff;
 }
-#main-sidebar ul li a.active{
-  color: #FBD872 !important;
+
+#main-sidebar ul li a.active {
+    color: #FBD872 !important;
 }
 
 #content {
@@ -93,11 +111,11 @@ body {
 }
 
 ul.menu-list li {
-  list-style-type: none;
-  font-family: 'jaune_doeufregular';
-  font-weight: 900;
-  font-size: 2.5rem;
-  line-height: 2.5rem;
+    list-style-type: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
 }
 
 .social-links-row {
@@ -107,7 +125,7 @@ ul.menu-list li {
     top: 85vh;
 }
 
-.social-links-row:before{
+.social-links-row:before {
     content: "";
     display: block;
     width: 20%;
@@ -119,152 +137,193 @@ ul.menu-list li {
 }
 
 #closer-btn {
-  background-color: #0047BB; 
-  margin-right:20px; 
-  margin-top: 20px;
+    background-color: #002b96;
+    position: absolute;
+    right: 32px;
+    top: 8px;
+    z-index: 10;
 }
+
+
 /* END SIDENAV */
+
 .blue-background {
-  background-color: #002b96!important
+    background-color: #002b96!important
 }
 
 .ristretto {
-  width: calc(100vw - 500px);
-  height: 100vh !important;
-  -webkit-transition: all 0.4s ease;                  
-  -moz-transition: all 0.4s ease;                 
-  -o-transition: all 0.4s ease;   
-  -ms-transition: all 0.4s ease;          
-  transition: all 0.4s ease;
+    width: calc(100vw - 500px);
+    height: 100vh !important;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    transition: all 0.4s ease;
 }
 
 div.ristretto img {
-  width: calc(100vw - 500px);
-  height: 100vh !important;
+    width: calc(100vw - 500px);
+    height: 100vh !important;
 }
 
 div.owl-carousel {
-	transition: all 0.3s;
+    transition: all 0.3s;
 }
 
+
 /* MENU SECTION */
-#the_menu li.active{
-  text-decoration: underline;
+
+#the_menu li.active {
+    text-decoration: underline;
 }
-#the_menu li a{
-  text-decoration:none;
-  color: #000;
-  font-weight: 700;
-  margin-right: 8px;
-  font-size: 1.2rem;
+
+#the_menu li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    margin-right: 8px;
+    font-size: 1.2rem;
 }
-#the_menu li.active a:hover{
-  color: #000;
+
+#the_menu li.active a:hover {
+    color: #000;
 }
-#the_menu li:hover{
-  background: rgba(255,255,255, 0.8);
+
+#the_menu li:hover {
+    background: rgba(255, 255, 255, 0.8);
 }
-#the_menu li.active a{
-  font-weight: 800;
+
+#the_menu li.active a {
+    font-weight: 800;
 }
+
 .the_menu-container {
-  position: fixed;
-  top: 20px;
-  left: 25%;
-  height: 40px;
-  z-index: 1050;
-  width: 50%;
+    position: fixed;
+    top: 20px;
+    left: 25%;
+    height: 40px;
+    z-index: 1050;
+    width: 50%;
 }
-#the_menu{
+
+#the_menu {
     display: inline-flex;
     list-style: none;
 }
+
 .li-divider {
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: #000;
-  margin-right: 8px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #000;
+    margin-right: 8px;
 }
+
+
 /* /MENU SECTION */
 
 .beer-card-content {
-  position: relative;
-  padding-top: 110px;
-  height: 100vh;
+    position: relative;
+    padding-top: 110px;
+    height: 100vh;
 }
 
 div.beer-card-content svg {
-  position: absolute;
-  height: calc(100vh - 110px);
-  bottom: 0px;
-  left: calc((100vw - ((100vh - 110px) / 0.715)) / 2);
-  z-index: -1;
+    position: absolute;
+    height: calc(100vh - 110px);
+    bottom: 0px;
+    left: calc((100vw - ((100vh - 110px) / 0.715)) / 2);
+    z-index: -1;
 }
 
 .beer-card-details {
-  height: calc(100vh - 110px);
-  width: calc((100vh - 110px) / 0.708);
-  margin-left: calc((100vw - ((100vh - 110px) / 0.715)) / 2);
-  position: relative;
+    height: calc(100vh - 110px);
+    width: calc((100vh - 110px) / 0.708);
+    margin-left: calc((100vw - ((100vh - 110px) / 0.715)) / 2);
+    position: relative;
 }
 
 .row-card-details {
-  height: calc(100vh - 110px);
+    height: calc(100vh - 110px);
 }
 
 #navbar_primary {
-  height: 110px;
+    height: 110px;
 }
 
 .bottle-card-image {
-  position: absolute;
-  transform: rotate(-5deg);
-  left: 30px;
-  bottom: 30px;
-  height: calc(100vh - 150px);
-  width: calc((100vh - 150px) / 3.8);
+    position: absolute;
+    transform: rotate(-5deg);
+    left: 30px;
+    bottom: 30px;
+    height: calc(100vh - 150px);
+    width: calc((100vh - 150px) / 3.8);
 }
 
 .tap-card-image {
-  position: absolute;
-  left: -60px;
-  top: 30px;
-  width: 400px;
-  height: 400px;
-  transform: rotate(-5deg);
+    position: absolute;
+    left: -60px;
+    top: 30px;
+    width: 400px;
+    height: 400px;
+    transform: rotate(-5deg);
 }
 
 .fp-controlArrow.fp-next {
-  right: 15px;
-  width: 0;
-  border-width: 38.5px 0 38.5px 34px;
-  border-color: transparent transparent transparent #002B96;
+    right: 15px;
+    width: 0;
+    border-width: 38.5px 0 38.5px 34px;
+    border-color: transparent transparent transparent #002B96;
 }
 
 .fp-controlArrow.fp-prev {
-  left: 15px;
-  width: 0;
-  border-width: 38.5px 34px 38.5px 0;
-  border-color: transparent #002B96 transparent transparent;
+    left: 15px;
+    width: 0;
+    border-width: 38.5px 34px 38.5px 0;
+    border-color: transparent #002B96 transparent transparent;
 }
 
 .alc-row {
-  border: 1px solid #fff;
+    border: 1px solid #fff;
 }
 
 .alc-row-center {
-  border-left: 1px solid #fff;
-  border-right: 1px solid #fff;
-
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
 }
+
 .alchol-details {
-  font-weight: 800;
-  font-size: 1.5rem;
-}
-.alchol-spec {
-  font-weight: 700;
+    font-weight: 800;
+    font-size: 1.5rem;
 }
 
-#fp-nav ul li a span, .fp-slidesNav ul li a span {
+.alchol-spec {
+    font-weight: 700;
+}
+
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
     background: #dd7a0e;
+}
+
+#tagline {
+    position: absolute;
+    z-index: 10;
+    width: 70%;
+    left: 15%;
+    background-color: rgba(255, 255, 255, 0.25);
+    visibility: hidden;
+    transition: left 0.3s;
+}
+
+.tagline-text h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800 !important;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.5rem;
 }
