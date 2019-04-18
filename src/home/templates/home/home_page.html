@@ -15,14 +15,38 @@
 <div id="sidebarCollapse" class="btn-navbar-toggler">
     <i class="fas fa-bars fa-3x" style="color: #fff;"></i>
 </div>
+
+{% image page.logo_image original width-370 as the_logo_little %}
+<img {{ the_logo_little.attrs }} class="little-logo d-block d-lg-none" 
+    id="logo-image-little" alt="lord chambray logo"
+    style="top:calc((75vh - {{ the_logo_little.height }}px)/2);">
+
 {% image page.logo_image original as the_logo %}
-<img {{ the_logo.attrs }} class="big-logo" id="logo-image"
+<img {{ the_logo.attrs }} class="big-logo d-none d-lg-block" id="logo-image" alt="lord chambray logo"
     style="left: calc((100vw - {{ the_logo.width }}px) / 2); top:calc((70vh - {{ the_logo.height }}px)/2);">
-<div id="tagline" class="tagline-text text-center"
+
+<div id="tagline" class="d-none d-lg-block text-center"
     style="bottom: 10vh;">
   {{ page.body|safe }}
 </div>
-<div class="owl-carousel lrd-hidden">
+
+<div class="owl-carousel lrd-hidden d-block d-sm-none">
+  {% for slide in page.get_collection_images %}
+    {% image slide fill-400x1020 as slide_image_little %}
+    <img data-src="{{ slide_image_little.url }}" alt="{{ slide.title }}"
+        class="owl-lazy home-slide-little">
+  {% endfor %}
+</div>
+
+<div class="owl-carousel lrd-hidden d-none d-sm-block d-lg-none">
+  {% for slide in page.get_collection_images %}
+    {% image slide width-750 as slide_image_medium %}
+    <img data-src="{{ slide_image_medium.url }}" alt="{{ slide.title }}"
+        class="owl-lazy home-slide-medium">
+  {% endfor %}
+</div>
+
+<div class="owl-carousel lrd-hidden d-none d-lg-block">
   {% for slide in page.get_collection_images %}
     {% image slide fill-1980x1020 as slide_image %}
     <img data-src="{{ slide_image.url }}" alt="{{ slide.title }}"
@@ -55,7 +79,6 @@ $(document).ready(function(){
     animateIn: 'slideInRight',
     smartSpeed:450
   });
-  console.log('ouuooi', 'pluto');
   setTimeout(function(){
     $('#tagline').velocity('zoomIn',{duration: 3000}, {loop: true});
   }, 3000);

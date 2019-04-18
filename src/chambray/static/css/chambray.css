@@ -43,7 +43,7 @@ body {
 
 .big-logo {
     position: absolute;
-    z-index: 100000;
+    z-index: 10;
     transition: all 0.3s;
 }
 
@@ -65,10 +65,11 @@ body {
     transition: all 0.3s;
     min-height: 100vh;
     z-index: 1050;
+    margin-right: 0px;
 }
 
 #main-sidebar.active {
-    margin-right: -500px;
+    margin-right: -500px !important;
 }
 
 #main-sidebar .sidebar-header {
@@ -104,6 +105,23 @@ body {
     color: #FBD872 !important;
 }
 
+.social-links-row {
+    position: absolute;
+    left: 55px;
+    width: 100%;
+    top: 85vh;
+}
+
+li.social-item {
+    display: inline-block;
+    width: 43px;
+    height: 43px;
+    margin-top: 5px;
+    margin-right: 3px;
+    padding-left: 6px;
+    padding-top: 5px;
+}
+
 #content {
     width: 100%;
     min-height: 100vh;
@@ -125,23 +143,12 @@ ul.menu-list li {
     top: 85vh;
 }
 
-.social-links-row:before {
-    content: "";
-    display: block;
-    width: 20%;
-    height: 6px;
-    background-color: #D1CCBD;
-    position: relative;
-    top: 29px;
-    margin-left: 30px;
-}
-
 #closer-btn {
     background-color: #002b96;
     position: absolute;
     right: 32px;
     top: 8px;
-    z-index: 10;
+    z-index: 10510;
 }
 
 
@@ -152,7 +159,7 @@ ul.menu-list li {
 }
 
 .ristretto {
-    width: calc(100vw - 500px);
+    width: calc(100vw - 500px) !important;
     height: 100vh !important;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -315,15 +322,112 @@ div.beer-card-content svg {
     transition: left 0.3s;
 }
 
-.tagline-text h1,
-h2,
-h3,
-h4,
-h5,
-p {
+#tagline > h1, h2, h3, h4, h5 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 800 !important;
     color: #fff;
     text-transform: uppercase;
     font-size: 1.5rem;
+}
+
+.little-logo {
+    position: absolute;
+    z-index: 10;
+}
+
+
+/* EXTRA SMALL DEVICES */
+
+@media(max-width:575px) {
+    .owl-carousel {
+        max-width: 575px !important;
+    }
+    #main-sidebar {
+        margin-right: -0px;
+        padding-top: 25vh;
+        min-width: 350px;
+        max-width: 350px;
+    }
+    #main-sidebar.active {
+        margin-right: -350px;
+    }
+    .little-logo {
+        width: 90% !important;
+        left: 5%;
+    }
+    .home-slide-little {
+        max-width: 575px;
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+
+/* SMALL DEVICES */
+
+@media(min-width:576px) and (max-width:767px) {
+    .owl-carousel {
+        max-width: 767px !important;
+    }
+    #main-sidebar {
+        margin-right: -0px;
+        padding-top: 25vh;
+        min-width: 350px;
+        max-width: 350px;
+    }
+    #main-sidebar.active {
+        margin-right: -350px;
+    }
+    .little-logo {
+        width: 60% !important;
+        left: 20%;
+        border: 2px solid aqua;
+    }
+    .home-slide-medium {
+        max-width: 767px !important;
+    }
+}
+
+
+/* MEDIUM DEVICES */
+
+@media(min-width:768px) and (max-width:991px) {
+    .owl-carousel {
+        max-width: 991px !important;
+    }
+    .little-logo {
+        width: 40% !important;
+        left: 30%;
+    }
+    .home-slide-medium {
+        max-width: 991px !important;
+        height: 100vh;
+    }
+}
+
+
+/* LARGE DEVICES */
+
+@media(min-width:992px) and (max-width:1199px) {
+    .owl-carousel {
+        max-width: 1199px;
+        height: 100vh;
+    }
+    .home-slide {
+        height: 100vh;
+    }
+}
+
+
+/* EXTRA LARGE DEVICES */
+
+@media(min-width:1200px) {
+    .owl-carousel {
+        min-width: 1200px;
+        width: 100%;
+    }
+    .home-slide {
+        min-width: 1200px !important;
+        min-height: 100vh;
+    }
 }
