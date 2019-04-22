@@ -157,7 +157,7 @@ class Beer(AbstractBaseModel):
 		null=False,
 		blank=False,
 		default=u'Pay atention => Only the best natural ingredients.',
-		verbose_name='How to store Lord Chambray')
+		verbose_name='Beer ingredients')
 
 	panels = [
 		FieldPanel('name', classname='title'),
