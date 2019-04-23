@@ -3,58 +3,71 @@
 <div class="text-center beer-card-content">
   {% include 'beer/partials/arrow.html' with the_color=the_beer.contrast_background %}
   <div class="beer-card-details align-items-center">
-      {% if the_beer.bottle_image %}
-      {% image the_beer.bottle_image width-180 as the_bottle %}
-      <img {{ the_bottle.attrs }} class="bottle-card-image">
-      {% else %}
-      {% image the_beer.tap_image width-400 as the_tap %}
-      <img {{ the_tap.attrs }} class="tap-card-image">
-      {% endif %}
-      <div class="row align-items-center row-card-details">
-        <div class="col-sm-6 offset-sm-3 text-center justify-content-center">
-          <h2 class="text-light text-uppercase">
-            {{ the_beer.name }}
-          </h2>
-          <h3 class="text-light text-uppercase">
+    {% if the_beer.bottle_image %}
+    {% image the_beer.bottle_image width-180 as the_bottle %}
+    <img {{ the_bottle.attrs }} class="bottle-card-image">
+    {% else %}
+    {% image the_beer.tap_image width-400 as the_tap %}
+    <img {{ the_tap.attrs }} class="tap-card-image">
+    {% endif %}
+    <div class="row align-items-center row-card-details">
+      <div class="col-sm-8 offset-sm-2 justify-content-center">
+        <h1 class="text-light text-uppercase text-center">
+          {{ the_beer.name }}
+          <span class="beer-claim">
             {{ the_beer.claim }}
-          </h3>
-          <div class="row align-items-center justify-content-center">
-            <div class="col-sm-2 offset-sm-1 text-light justify-content-center">
-              <div class="row alc-row">
-                <div class="col text-left">
-                  <span class="alchol-spec">
-                    ALC.
-                  </span>
-                </div>
-              </div>
-              <div class="row alc-row-center">
-                <div class="col text-center">
-                  <span class="alchol-details">
-                    {{ the_beer.alcoholic_content }}
-                  </span>
-                </div>
-              </div>
-              <div class="row alc-row">
-                <div class="col text-right">
-                  <span class="alchol-spec">
-                    VOL.
-                  </span>
-                </div>
+          </span>
+        </h1>
+        <div class="row">
+          <div class="col-lg-3 beer-info-col text-center">
+            <div class="row beer-info-detail">
+              <div class="col">
+                <h5>
+                  <abbr title="Alchol content" class="initialism">
+                    ABV
+                  </abbr>
+                </h5>
+                <h3>{{ the_beer.alcoholic_content }}</h3>
               </div>
             </div>
-            <div class="col-sm-8 justify-content-center">
-              {% image the_beer.label width-300 as the_label %}
-              <img {{ the_label.attrs }} class="label-detail-image">
+            <div class="row beer-info-detail">
+              <div class="col">
+                <h5>
+                  <abbr title="IBU" class="initialism">
+                    IBU
+                  </abbr>
+                </h5>
+                <h3>{{ the_beer.ibu }}</h3>
+              </div>
+            </div>
+            <div class="row beer-info-detail">
+              <div class="col">
+                <h5>
+                  SERVE AT
+                </h5>
+                <h3>{{ the_beer.serving_temperature }}</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h5>AVAILABILITY</h5>
+                {% for availability in the_beer.availabilities_type.all %}
+                  <img src="{{ availability.container.svg_icon.url }}" 
+                    width="75px" style="margin-bottom: 10px;">                
+                {% endfor %}
+              </div>
             </div>
           </div>
-          <div class="row align-items-center justify-content-center">
-            <div class="col align-items-center justify-content-center">
-              <p class="description-details text-light text-justify text-uppercase">
-                {{ the_beer.short_description }}
-              </p>
-            </div>
-          </div>
+          <div class="col-lg-9 beer-detail-col text-justify justify-content-center">
+            <p class="justify-te">{{ the_beer.short_description }}</p>
+            <img src="{{ the_beer.infographic_icon.url }}" width="80%"
+              alt="{{ the_beer.name }} specs"
+              style="margin-left:10%; margin-bottom: 35px;">
+            <p><b>INGREDIENTS:</b>{{ the_beer.ingredients }}</p>
+            <p><b>FOOD PAIRINGS:</b>{{ the_beer.food_pairings }}
+          </div>         
         </div>
       </div>
+    </div>
   </div>
 </div>

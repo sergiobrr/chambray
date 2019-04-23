@@ -9,6 +9,7 @@ from colorful.fields import RGBColorField
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalManyToManyField
 from chambray.base_models import AbstractBaseModel
+from chambray.utils import get_svg_content
 
 # Create your models here.
 
@@ -137,12 +138,8 @@ class Beer(AbstractBaseModel):
 		null=True,
 		verbose_name='Tasting Style')
 	alcoholic_content = models.CharField(max_length=255,
-		null=False,
-		blank=False,
 		verbose_name="ABV")
 	ibu = models.CharField(max_length=255,
-		null=False,
-		blank=False,
 		verbose_name="IBU",
 		default='15.5')
 	food_pairings = models.CharField(max_length=255,
@@ -204,6 +201,9 @@ class Beer(AbstractBaseModel):
 	def __str__(self):
 		return self.name
 
+	def get_infographic_icon_content(self):			
+		return get_svg_content(self.infographic_icon)
+
 
 class BeerContainer(AbstractBaseModel):
 	name = models.CharField(max_length=255, verbose_name='Container name')
@@ -232,6 +232,9 @@ class BeerContainer(AbstractBaseModel):
 
 	def __str__(self):
 		return self.name
+
+	def get_svg_icon_content(self):
+		return get_svg_content(self.svg_icon)
 
 
 class BeerAvailability(AbstractBaseModel):

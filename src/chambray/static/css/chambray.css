@@ -228,88 +228,8 @@ div.owl-carousel {
 
 /* /MENU SECTION */
 
-.beer-card-content {
-    position: relative;
-    padding-top: 110px;
-    height: 100vh;
-}
-
-div.beer-card-content svg {
-    position: absolute;
-    height: calc(100vh - 110px);
-    bottom: 0px;
-    left: calc((100vw - ((100vh - 110px) / 0.715)) / 2);
-    z-index: -1;
-}
-
-.beer-card-details {
-    height: calc(100vh - 110px);
-    width: calc((100vh - 110px) / 0.708);
-    margin-left: calc((100vw - ((100vh - 110px) / 0.715)) / 2);
-    position: relative;
-}
-
-.row-card-details {
-    height: calc(100vh - 110px);
-}
-
 #navbar_primary {
     height: 110px;
-}
-
-.bottle-card-image {
-    position: absolute;
-    transform: rotate(-5deg);
-    left: 30px;
-    bottom: 30px;
-    height: calc(100vh - 150px);
-    width: calc((100vh - 150px) / 3.8);
-}
-
-.tap-card-image {
-    position: absolute;
-    left: -60px;
-    top: 30px;
-    width: 400px;
-    height: 400px;
-    transform: rotate(-5deg);
-}
-
-.fp-controlArrow.fp-next {
-    right: 15px;
-    width: 0;
-    border-width: 38.5px 0 38.5px 34px;
-    border-color: transparent transparent transparent #002B96;
-}
-
-.fp-controlArrow.fp-prev {
-    left: 15px;
-    width: 0;
-    border-width: 38.5px 34px 38.5px 0;
-    border-color: transparent #002B96 transparent transparent;
-}
-
-.alc-row {
-    border: 1px solid #fff;
-}
-
-.alc-row-center {
-    border-left: 1px solid #fff;
-    border-right: 1px solid #fff;
-}
-
-.alchol-details {
-    font-weight: 800;
-    font-size: 1.5rem;
-}
-
-.alchol-spec {
-    font-weight: 700;
-}
-
-#fp-nav ul li a span,
-.fp-slidesNav ul li a span {
-    background: #dd7a0e;
 }
 
 #tagline {
@@ -322,7 +242,11 @@ div.beer-card-content svg {
     transition: left 0.3s;
 }
 
-#tagline > h1, h2, h3, h4, h5 {
+#tagline h1,
+#tagline h2,
+#tagline h3,
+#tagline h4,
+#tagline h5 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 800 !important;
     color: #fff;
