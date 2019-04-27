@@ -1,0 +1,36 @@
+
+.shop-title {
+	font-weight: 800;
+}
+
+.shop-subtitle {
+	font-size: 2.5rem;
+	font-weight: 500;
+}
+
+.shop-tagline {
+	margin-left: calc((100vw - 472px) / 2);
+	height: 150px;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+.grid {
+	max-width: 1200px;
+}
+
+.grid-item {
+	width: 350px;
+	height: 260px;
+	margin-bottom: 10px;
+}
+
+.shop-cart {
+	position: absolute;
+	left: calc((350px - 100px) / 2);
+	bottom: 10px;
+}
+
+button.shop-cart i {
+	color: #fff !important;
+}

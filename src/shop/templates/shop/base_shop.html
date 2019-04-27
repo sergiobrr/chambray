@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_class %}{% endblock %}
+
+{% block content %}
+  {% include 'navbar_primary.html' %}
+  <div class="detail-container">
+    {% block content_detail %}
+    {% endblock content_detail %}
+  </div>
+{% endblock content %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/shop.css' %}">
+{% endblock extra_css %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('#sidebarCollapse').on('click',function(){
+    $('#main-sidebar').toggleClass('active');
+  });
+  $('#closer-btn').on('click',function(){
+    $('#main-sidebar').toggleClass('active');
+  });
+});
+</script>
+  {% block extrascript %}
+  {% endblock extrascript %}
+{% endblock extra_js %}

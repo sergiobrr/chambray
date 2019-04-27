@@ -1,0 +1,80 @@
+{% extends 'shop/base_shop.html' %}
+
+{% load static i18n wagtailcore_tags wagtailimages_tags %}
+
+{% block content_detail %}
+<section class="shop">
+  <div class="row justify-content-center">
+    <div class="col justify-content-center">
+      <img src="{% static 'img/logo_tagline_positive.png' %}"
+          alt="Lord Chambray: we speak beers" class="shop-tagline">
+      <h1 class="display-4 text-center shop-title">
+        The eshop
+        <span class="shop-subtitle">
+          soon available online.
+        </span>
+      </h1>
+      <hr/>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col grid">
+      {% for item in items %}
+      <div class="grid-item" 
+          style="background-image: url('{{ item.url }}');">
+        <button class="btn btn-sm btn-success shop-cart"
+            data-toggle="modal" data-target="#mailing_list_modal">
+          <i class="fas fa-shopping-cart fa-xs"></i> Add to cart 
+        </button>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>
+        <b>Download our beers spec-sheets:</b>
+        {% for beer in beers %}
+          {% if beer.spec_sheet %}
+          <a href="{{ beer.spec_sheet.url }}">
+            {{ beer.name }}
+          </a>
+          {% endif %}
+        {% endfor %}
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock content_detail %}
+
+{% block extrascript %}
+<script>
+  $(document).ready(function() {
+    $('.grid').masonry({
+      gutter: 10,
+      itemSelector: '.grid-item',
+      columnWidth: 350
+    });
+  });
+</script>
+<!-- Modal -->
+<div class="modal fade" id="mailing_list_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock extrascript %}
