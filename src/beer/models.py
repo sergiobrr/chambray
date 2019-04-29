@@ -180,7 +180,7 @@ class Beer(AbstractBaseModel):
 				FieldPanel('food_pairings', classname='col6'),
 				FieldPanel('ingredients', classname='col12')
 			]),
-		], heading='Tasting', classname="collapsible collapsed"),
+		], heading='Tasting', classname="collapsible"),
 		MultiFieldPanel([
 			FieldRowPanel([
 				FieldPanel('alcoholic_content', classname='col4'),

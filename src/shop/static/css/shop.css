@@ -17,6 +17,7 @@
 
 .grid {
 	max-width: 1200px;
+	margin: 0 auto;
 }
 
 .grid-item {
@@ -33,4 +34,45 @@
 
 button.shop-cart i {
 	color: #fff !important;
+}
+
+section {
+	margin-bottom: 30px;
+}
+
+
+/* MEDIUM DEVICES */
+
+@media(min-width:100px) and (max-width:699px) {
+    .grid {
+		padding-left: calc((100% - 350px) / 2);
+	}
+	.gutter-sizer {
+		width: 0px;
+	}
+}
+
+
+/* 2 COLONNE */
+
+@media(min-width:700px) and (max-width:1049px) {
+	.grid {
+		padding-left: calc((100% - 700px) / 3);
+	}
+    .gutter-sizer {
+		width: calc((100% - 700px) / 3);
+	}
+}
+
+
+/* 3 COLONNE */
+
+@media(min-width:1050px) {
+	.grid {
+		padding-right: 1.5%;
+		padding-left: 1.5%;
+	}
+    .gutter-sizer {
+		width: calc((98.5% - 1050px) / 2);
+	}
 }

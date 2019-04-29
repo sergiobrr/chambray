@@ -22,11 +22,13 @@ EMAIL_HOST_USER = os.environ.get('SMTP_USER', None)
 EMAIL_HOST_PASSWORD = os.environ.get('SMTP_PASSWORD', None)
 DEFAULT_FROM_EMAIL = 'assist.tecne@gmail.com'
 
+RECIPIENTS = ['info@lordchambray.com.mt', ]
+
 ADMINS = [
     ('Sergio Brero', 'sergio.brero.it@gmail.com'),
 ]
 MANAGERS = ADMINS
-EMAIL_SUBJECT_PREFIX = '[LordChambray Wagtail] '
+EMAIL_SUBJECT_PREFIX = '[LordChambray site] '
 INTERNAL_IPS = ('127.0.0.1', '178.62.37.214')
 
 # A sample logging configuration. The only tangible logging
@@ -87,3 +89,7 @@ GZIP_CONTENT_TYPES = (
 )
 HTML_MINIFY = True
 COMPRESS_ENABLED = True
+
+
+GOOGLE_RECAPTCHA_SITE_KEY = os.environ.get('GOOGLE_RECAPTCHA_SITE_KEY', None)
+GOOGLE_RECAPTCHA_SECRET_KEY = os.environ.get('GOOGLE_RECAPTCHA_SECRET_KEY', None)

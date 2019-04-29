@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static snippettags %}
 
 {% block body_class %}{% endblock %}
 
@@ -9,6 +9,7 @@
     {% block content_detail %}
     {% endblock content_detail %}
   </div>
+  {% render_basesnippet identifier='footer' %}
 {% endblock content %}
 
 {% block extra_css %}

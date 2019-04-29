@@ -52,8 +52,8 @@ body {
 
 .wrapper {
     display: flex;
-    width: 100vw;
-    align-items: stretch;
+    /* width: 100vw; */
+    /* align-items: stretch; */
 }
 
 #main-sidebar {
@@ -225,6 +225,49 @@ div.owl-carousel {
     margin-right: 8px;
 }
 
+footer hr {
+    background-color: #002B96;
+}
+
+footer a {
+    color: #7e7b72;
+}
+
+.footer-header {
+    font-weight: 800;
+}
+
+.footer-detail {
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+
+.footer-site {
+    background-color: #d1ccbd;
+    color: #002B96;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.end-site {
+    background-color: #7e7b72;
+    color: #d1ccbd;
+    padding-top: 15px;
+    font-size: 0.9rem;
+}
+
+.social-footer-row {
+     background-color: #d1ccbd;
+}
+
+.social-footer-row i {
+    color: #002B96 !important; 
+}
+
+p.credits a {
+    color: #002B96;
+}
 
 /* /MENU SECTION */
 

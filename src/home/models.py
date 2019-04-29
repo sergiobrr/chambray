@@ -1,14 +1,23 @@
 from django.db import models
 from wagtail.contrib.settings.models import BaseSetting, register_setting
-from wagtail.core.models import Page, Collection
+from wagtail.core.models import Page, Collection, Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel,\
+	InlinePanel, FieldRowPanel
 from wagtail.images import get_image_model
 from wagtailschemaorg.models import BaseLDSetting
 from wagtailschemaorg.registry import register_site_thing
 from wagtailschemaorg.utils import extend
 from phonenumber_field.modelfields import PhoneNumberField
+from wagtail.snippets.models import register_snippet
+from django.utils.html import format_html
+from wagtail.core.models import Page, Orderable
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.documents.edit_handlers import DocumentChooserPanel
+from wagtail.search import index
+from modelcluster.fields import ParentalKey
+from modelcluster.models import ClusterableModel
 
 
 class HomePage(Page):
@@ -89,6 +98,14 @@ class SocialMediaSettings(BaseSetting):
 	def __str__(self):
 		return 'Media settings - id: %d' % self.pk
 
+	def get_ldjson(self):
+		return [
+			self.facebook,
+			self.instagram,
+			self.twitter,
+			self.youtube
+		]
+
 
 @register_setting(icon='home')
 class AddressSettings(BaseSetting):
@@ -116,6 +133,16 @@ class AddressSettings(BaseSetting):
 	def __str__(self):
 		return '%s, %s' % (self.streetAddress, self.addressCountry)
 
+	def get_ldjson(self):
+		return {
+			"@type": "PostalAddress",
+			"streetAddress": self.streetAddress,
+			"addressLocality": self.addressLocality,
+			"addressRegion": self.addressRegion,
+			"postalCode": self.postalCode,
+			"addressCountry": self.addressCountry
+		}
+
 
 @register_setting(icon='mail')
 class ContactPointSettings(BaseSetting):
@@ -132,6 +159,14 @@ class ContactPointSettings(BaseSetting):
 
 	def __str__(self):
 		return '%s at %s' % (self.contactType, self.email)
+
+	def get_ldjson(self):
+		return {
+			"@type": "ContactPoint",
+			"contactType": self.contactType,
+			"telephone": self.telephone.as_e164,
+			"email": self.email
+		}
 
 
 @register_setting(icon='cog')
@@ -219,25 +254,102 @@ class BrewerySettings(BaseLDSetting):
 			"description": self.description,
 			"foundingDate": self.foundingDate,
 			"openingHours": self.openingHours,
-			"address": {
-				"@type": "PostalAddress",
-				"streetAddress": self.address.streetAddress,
-				"addressLocality": self.address.addressLocality,
-				"addressRegion": self.address.addressRegion,
-				"postalCode": self.address.postalCode,
-				"addressCountry": self.address.addressCountry
-			},
-			"contactPoint": {
-				"@type": "ContactPoint",
-				"contactType": self.contactPoint.contactType,
-				"telephone": self.contactPoint.telephone.as_e164,
-				"email": self.contactPoint.email
-			},
+			"address": self.address.get_ldjson(),
+			"contactPoint": self.contactPoint.get_ldjson(),
             "telephone": self.contactPoint.telephone.as_e164,
-			"sameAs": [
-				self.same_as.facebook,
-				self.same_as.instagram,
-				self.same_as.twitter,
-				self.same_as.youtube
-			]
+			"sameAs": self.same_as.get_ldjson()
 		})
+
+
+@register_snippet
+class BaseSnippet(index.Indexed, ClusterableModel):
+	description = models.CharField(
+		unique=True,
+		max_length=255,
+		verbose_name='Logical description'
+	)
+	identifier = models.CharField(
+		max_length=255,
+		unique=True,
+		verbose_name='Unique identifier to use in template'
+	)
+
+	panels = [
+		MultiFieldPanel([
+			FieldRowPanel([
+				FieldPanel('description', classname='col6'),
+				FieldPanel('identifier', classname='col6'),
+			]),
+		], heading='Displaying properties', classname='collapsible'),
+		InlinePanel('link_lists', label="Links")
+	]
+
+	search_fields = [
+		index.SearchField('description', partial_match=True),
+		index.SearchField('identifier', partial_match=True)
+	]
+
+	def __str__(self):
+		return self.description
+
+
+@register_snippet
+class LinkSnippet(index.Indexed, models.Model):
+	identifier = models.CharField(
+		max_length=255,
+		unique=True,
+		verbose_name='Unique identifier to use in template'
+	)
+	link_text = models.CharField(
+		max_length=255,
+		verbose_name='Text to display'
+	)
+	url = models.URLField(
+		max_length=512,
+		verbose_name='Url for external page'
+	)
+
+	panels = [
+		FieldPanel('identifier', classname='full'),
+        FieldPanel('link_text', classname='full'),
+        FieldPanel('url', classname='full'),
+    ]
+
+	search_fields = [
+        index.SearchField('link_text', partial_match=True),
+        index.SearchField('identifier', partial_match=True),
+    ]
+
+	def to_html(self, css_classes=None):
+		return format_html(
+			'<a href="%s" class="%s" target="_blank">%s</a>' % (
+													self.url, 
+													css_classes, 
+													self.link_text
+												)
+		)
+
+	def __str__(self):
+		return '%s - %s' % (self.identifier, self.link_text)
+
+
+@register_snippet
+class LinkPlacement(Orderable, models.Model):
+	container=ParentalKey(
+		BaseSnippet,
+		on_delete=models.CASCADE,
+		related_name='link_lists'
+	)
+	content=models.ForeignKey(
+		LinkSnippet,
+		on_delete=models.CASCADE,
+		related_name='containers'
+	)
+
+	class Meta:
+		verbose_name = 'Link positioning'
+		verbose_name_plural = 'Link positionings'
+
+	def __str__(self):
+		return content.identifier + ' => on ' + container.identifier
+	

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static snippettags %}
+
+{% block body_class %}{% endblock %}
+
+{% block content %}
+  {% include 'navbar_primary.html' %}
+  <div class="detail-container">
+    {% block content_detail %}
+    {% endblock content_detail %}
+  </div>
+  {% render_basesnippet identifier='footer' %}
+{% endblock content %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock extra_css %}

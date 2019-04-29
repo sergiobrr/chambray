@@ -1,17 +1,18 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
-
+from .decorators import check_recaptcha
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.contrib.sitemaps.views import sitemap
 from search import views as search_views
 from shop.views import shop_landing_page as shop_landing_page_view
+from contact.views import ContactCreateView
 
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
-
+    url(r'^contacts/', check_recaptcha(ContactCreateView.as_view()), name='contact'),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^shop/', shop_landing_page_view, name='shop'),

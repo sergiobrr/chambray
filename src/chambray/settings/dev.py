@@ -12,8 +12,10 @@ ALLOWED_HOSTS = ['*']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-
 try:
     from .local import *
 except ImportError:
     pass
+
+GOOGLE_RECAPTCHA_SITE_KEY = '6Le9waAUAAAAAG7MVVF9r6GMVltJp88egk8An1pF'
+GOOGLE_RECAPTCHA_SECRET_KEY = '6Le9waAUAAAAANyXrlCEohvlQJ9hnr45ORUI3iZ8'
