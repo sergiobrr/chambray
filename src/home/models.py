@@ -143,6 +143,15 @@ class AddressSettings(BaseSetting):
 			"addressCountry": self.addressCountry
 		}
 
+	def get_single_line_address(self):
+		return '%s %s, %s %s %s' % (
+			self.streetAddress,
+			self.addressLocality,
+			self.addressRegion,
+			self.postalCode,
+			self.addressCountry
+		)
+
 
 @register_setting(icon='mail')
 class ContactPointSettings(BaseSetting):

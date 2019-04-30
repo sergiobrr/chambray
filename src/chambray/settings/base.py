@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'wagtailcache',
     'django.contrib.sitemaps',
     'compressor',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -202,3 +203,5 @@ WAGTAILIMAGES_MAX_UPLOAD_SIZE = 15 * 1024 * 1024
 DEFAULT_FROM_EMAIL = 'admin@site.com'
 RECIPIENTS = ['assist.tecne@gmail.com', ]
 EMAIL_SUBJECT_PREFIX = '[Testing Site] '
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
