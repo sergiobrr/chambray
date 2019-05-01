@@ -2,107 +2,27 @@
 {% load crispy_forms_tags wagtailsettings_tags static %}
 
 {% block content_detail %}
-<section class="messages">
-  <div class="row" style="padding-bottom: 20px;">
-    <div class="col-xs-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-      <div class="row">
-        <div class="col-sm-12 col-md-6 text-right"
-            style="padding-top: 15px;">
-          <h2>
-            <i class="fas fa-landmark"></i>
-            {{ settings.home.BrewerySettings.name }}
-          </h2>
-          <h4>
-            <i class="fas fa-phone"></i>
-            Phone: {{ settings.home.ContactPointSettings.telephone }}
-          </h4>
-          <h4>
-            <i class="fas fa-thumbtack"></i>
-            Address: {{ settings.home.AddressSettings.get_single_line_address }}
-          </h4>
-          <h4>
-            <i class="fas fa-envelope"></i>
-            General Inquiries: {{ settings.home.ContactPointSettings.email }}
-          </h4>
-        </div>
-        <div class="col-sm-12 col-md-6">
-          <img src='{% static "img/quadro.png" %}' class="quadro-contact">
-        </div>
-      </div>
-    </div>
+<div class="row">
+  <div class="col-xs-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+    <form action="{{ request.path }}" method="post" class="create-form">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <script src='https://www.google.com/recaptcha/api.js'></script>
+      <div class="form-group g-recaptcha" data-sitekey="6Le9waAUAAAAAG7MVVF9r6GMVltJp88egk8An1pF"></div>
+      {% if messages %}
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      {% endif %}
+      <input type="submit" class="btn btn-lg btn-block btn-success" 
+          value="Send message">
+    </form>
   </div>
-  <div class="row" style="padding-bottom: 20px;">
-    <div class="col-xs-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-      <div id='map' class="malta"></div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-      <form action="/contact/create" method="post" class="create-form">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <script src='https://www.google.com/recaptcha/api.js'></script>
-        <div class="form-group g-recaptcha" data-sitekey="6Le9waAUAAAAAG7MVVF9r6GMVltJp88egk8An1pF"></div>
-        {% if messages %}
-          {% for message in messages %}
-            {{ message }}
-          {% endfor %}
-        {% endif %}
-        <input type="submit" class="btn btn-lg btn-block btn-success" value="Invia">
-      </form>
-    </div>
-  </div>
-</section>
+</div>
 {% endblock content_detail %}
 
 {% block extrascript %}
-<script>
-  $(document).ready(function(){
-    $('#sidebarCollapse').on('click',function(){
-      $('#main-sidebar').toggleClass('active');
-    });
-    $('#closer-btn').on('click',function(){
-      $('#main-sidebar').toggleClass('active');
-    });
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic2VzZXJnaW9icnIiLCJhIjoiZDg1ODk1ZWViNTU0Yzg5OWExNDJkNThjMGIxYjE1MTEifQ.PwouQjyK1xNZQZTk35Pbtw';
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/light-v10',
-      zoom: 11.5, 
-      center: [14.247873, 36.052099]
-    });
 
-    map.scrollZoom.disable();
-
-    map.on('load', function() {
-      map.loadImage('/static/img/birra.png', function(error, image){
-        if(error) throw error;
-        map.addImage('birra', image);
-        map.addLayer({
-          'id': 'points',
-          'type': 'symbol',
-          'source': {
-            'type': 'geojson',
-            'data': {
-              'type': 'FeatureCollection',
-              'features': [{
-                'type': 'Feature',
-                'geometry': {
-                  'type': 'Point',
-                  'coordinates': [14.261403, 36.036011]
-                }
-              }]
-            }
-          },
-          'layout': {
-            'icon-image': 'birra',
-            'icon-size': 0.5
-          }
-        });
-      });
-    });
-  });
-</script>
 {% endblock extrascript %}
 
 

@@ -24,7 +24,6 @@ class Contact(AbstractBaseModel):
     sender_email = models.EmailField(
         max_length=255,
         verbose_name='Sender email'
-
     )
     sender_telephone = models.CharField(
         max_length=255,
@@ -81,17 +80,17 @@ class Contact(AbstractBaseModel):
         from_email = settings.DEFAULT_FROM_EMAIL
         subject = settings.EMAIL_SUBJECT_PREFIX + self.subject
         
-        text_body = self.email + ' ha mandato un messaggio con il contenuto: \n'\
+        text_body = self.sender_email + ' ha mandato un messaggio con il contenuto: \n'\
             + self.body + '.\n Dati del messaggio:\n -Mittente: '\
             + self.sender_full_name + '\n -Telefono: ' + self.sender_telephone\
             + '\n -Tipo di messaggio: ' + self.message_type + '\n -Data invio: '\
-            + self.created.strftime('%d/%M/%Y') + '.'
+            + self.created.strftime('%d/%m/%Y') + '.'
         
-        html_content = '<h4>' + self.email + ' ha mandato un messaggio con il contenuto: </h4>'\
+        html_content = '<h4>' + self.sender_email + ' ha mandato un messaggio con il contenuto: </h4>'\
             + '<p> + ' + self.body + '</p><br/><h4>Dati del messaggio:</h4><ul><li>Mittente: '\
             + self.sender_full_name + '</li><li>Telefono: ' + self.sender_telephone + '</li>'\
             + '<li>Tipo di messaggio: ' + self.message_type + '</li><li>Data invio: '\
-            + self.created.strftime('%d/%M/%Y') + '</li></ul>'
+            + self.created.strftime('%d/%m/%Y') + '</li></ul>'
         
         message = EmailMultiAlternatives(
             subject, 
@@ -103,4 +102,6 @@ class Contact(AbstractBaseModel):
         message.attach_alternative(html_content, 'text/html')
         return message
 
-
+    def send_itself(self):
+        message = self.get_formatted_message()
+        message.send()

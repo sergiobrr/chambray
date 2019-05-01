@@ -242,23 +242,22 @@ footer a {
     font-size: 0.9rem;
 }
 
-
 .footer-site {
-    background-color: #d1ccbd;
-    color: #002B96;
+    background-color: #cbd1d2;
+    color: #7e7b72;
     padding-top: 15px;
     padding-bottom: 15px;
 }
 
 .end-site {
     background-color: #7e7b72;
-    color: #d1ccbd;
+    color: #cbd1d2;
     padding-top: 15px;
     font-size: 0.9rem;
 }
 
 .social-footer-row {
-     background-color: #d1ccbd;
+     background-color: #cbd1d2;
 }
 
 .social-footer-row i {
