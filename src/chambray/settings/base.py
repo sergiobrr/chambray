@@ -139,7 +139,7 @@ DATABASES = {
         'NAME': os.environ.get('DB_NAME', None),                       # Or path to database file if using sqlite3.
         'USER': os.environ.get('DB_USER', None),
         'PASSWORD': os.environ.get('DB_PASSWORD', None),
-        'HOST': os.environ.get('DB_HOST', None),                      # Empty for localhost through domain sockets or
+        'HOST': os.environ.get('DB_HOST_DEV', None),                      # Empty for localhost through domain sockets or
         'PORT': os.environ.get('DB_PORT', None),                      # Set to empty string for default.
     }
 }

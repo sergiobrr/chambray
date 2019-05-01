@@ -2,7 +2,7 @@ from .base import *
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('PROD_SECRET_KEY', None)
 # SECURITY WARNING: define the correct hosts in production!
-ALLOWED_HOSTS = ['.lordchambray.com', '.lordchambray.com.mt'] 
+ALLOWED_HOSTS = ['*', ] 
 DEBUG = False
 
 try:
@@ -21,6 +21,20 @@ EMAIL_PORT = os.environ.get('SMTP_PORT', None)
 EMAIL_HOST_USER = os.environ.get('SMTP_USER', None)
 EMAIL_HOST_PASSWORD = os.environ.get('SMTP_PASSWORD', None)
 DEFAULT_FROM_EMAIL = 'assist.tecne@gmail.com'
+
+# Database
+# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3'
+        'NAME': os.environ.get('DB_NAME', None),                       # Or path to database file if using sqlite3.
+        'USER': os.environ.get('DB_USER', None),
+        'PASSWORD': os.environ.get('DB_PASSWORD', None),
+        'HOST': os.environ.get('DB_HOST_PROD', None),                      # Empty for localhost through domain sockets or
+        'PORT': os.environ.get('DB_PORT', None),                      # Set to empty string for default.
+    }
+}
 
 RECIPIENTS = ['info@lordchambray.com.mt', ]
 
