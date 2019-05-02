@@ -5,13 +5,13 @@
   <div class="beer-card-details align-items-center">
     {% if the_beer.bottle_image %}
     {% image the_beer.bottle_image width-180 as the_bottle %}
-    <img {{ the_bottle.attrs }} class="bottle-card-image">
+    <img {{ the_bottle.attrs }} class="d-none d-lg-block bottle-card-image ">
     {% else %}
     {% image the_beer.tap_image width-400 as the_tap %}
-    <img {{ the_tap.attrs }} class="tap-card-image">
+    <img {{ the_tap.attrs }} class="d-none d-lg-block tap-card-image">
     {% endif %}
     <div class="row align-items-center row-card-details">
-      <div class="col-sm-8 offset-sm-2 justify-content-center">
+      <div class="col-sm-8 offset-sm-2 col-xs-12 justify-content-center">
         <h1 class="text-light text-uppercase text-center">
           {{ the_beer.name }}
           <span class="beer-claim">
@@ -19,7 +19,7 @@
           </span>
         </h1>
         <div class="row">
-          <div class="col-lg-3 beer-info-col text-center">
+          <div class="col-xs-12 col-lg-3 beer-info-col text-center">
             <div class="row beer-info-detail">
               <div class="col">
                 <h5>
@@ -58,13 +58,13 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-9 beer-detail-col text-justify justify-content-center">
+          <div class="col-xs-12 col-lg-9 beer-detail-col text-justify justify-content-center">
             <p class="justify-te">{{ the_beer.short_description }}</p>
             <img src="{{ the_beer.infographic_icon.url }}" width="80%"
               alt="{{ the_beer.name }} specs"
               style="margin-left:10%; margin-bottom: 35px;">
-            <p><b>INGREDIENTS:</b>{{ the_beer.ingredients }}</p>
-            <p><b>FOOD PAIRINGS:</b>{{ the_beer.food_pairings }}
+            <p><b>INGREDIENTS: </b>{{ the_beer.ingredients }}</p>
+            <p><b>FOOD PAIRINGS: </b>{{ the_beer.food_pairings }}
           </div>         
         </div>
       </div>

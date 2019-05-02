@@ -10,6 +10,14 @@ class ContactCreateView(CreateView):
     model = Contact 
     success_url = '/contacts/thankyou/'
 
+    def form_valid(self, form):
+        # check if google recaptcha was ok
+        if self.request.recaptcha_is_valid:
+            return super(ContactCreateView, self).form_valid(form)
+        else:
+            return super(ContactCreateView, self).form_invalid(form)
+
+
     def get_success_url(self):
         self.object.send_itself()
         url = super(ContactCreateView, self).get_success_url()

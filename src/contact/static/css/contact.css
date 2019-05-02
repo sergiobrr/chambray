@@ -24,3 +24,40 @@ form {
 .thankyou-signature {
 	padding-right: 45px;
 }
+
+.btn-send-message {
+	color: #fff;
+	background-color: #002B96;
+}
+
+/* EXTRA SMALL DEVICES */
+
+@media(max-width:575px) {
+	form {
+		padding: 20px 10px 20px 10px;
+	}
+}
+
+/* SMALL DEVICES */
+
+@media(min-width:576px) and (max-width:767px) {
+
+}
+
+/* MEDIUM DEVICES */
+
+@media(min-width:768px) and (max-width:991px) {
+
+}
+
+/* LARGE DEVICES */
+
+@media(min-width:992px) and (max-width:1199px) {
+
+}
+
+/* EXTRA LARGE DEVICES */
+
+@media(min-width:1200px) {
+
+}

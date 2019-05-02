@@ -29,7 +29,7 @@
                 General Inquiries: {{ settings.home.ContactPointSettings.email }}
               </h4>
             </div>
-            <div class="col-sm-12 col-md-6">
+            <div class="d-none d-sm-block col-md-6">
               <img src='{% static "img/quadro.png" %}' class="quadro-contact">
             </div>
           </div>
@@ -56,13 +56,21 @@
 <script src='https://static-assets.mapbox.com/gl-pricing/dist/mapbox-gl.js'></script>
 <script>
   $(document).ready(function(){
+    var toggleAll = function() {
+      $('#content').toggleClass('ristretto');
+      $('#main-sidebar').toggleClass('active');
+    };
+
     $('#sidebarCollapse').on('click',function(){
-      $('#main-sidebar').toggleClass('active');
+      toggleAll();
     });
+
     $('#closer-btn').on('click',function(){
-      $('#main-sidebar').toggleClass('active');
+      toggleAll();
     });
+
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2VzZXJnaW9icnIiLCJhIjoiZDg1ODk1ZWViNTU0Yzg5OWExNDJkNThjMGIxYjE1MTEifQ.PwouQjyK1xNZQZTk35Pbtw';
+    
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/light-v10',

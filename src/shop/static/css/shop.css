@@ -50,8 +50,13 @@ section {
 	.gutter-sizer {
 		width: 0px;
 	}
+	.shop-tagline {
+		display: none;
+	}
+	section.shop {
+		margin-top: 120px;
+	}
 }
-
 
 /* 2 COLONNE */
 
@@ -63,7 +68,6 @@ section {
 		width: calc((100% - 700px) / 3);
 	}
 }
-
 
 /* 3 COLONNE */
 
