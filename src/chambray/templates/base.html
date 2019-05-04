@@ -52,10 +52,11 @@
             {# Override this in templates to add extra javascript #}
         {% endblock %}
         {# Global javascript #}
-        {% comment %}
         {% compress js %}
-        <script type="text/javascript" src="{% static 'js/chambray.js' %}"></script>
+        <script type="text/javascript" 
+                src="{% static 'js/jquery.lockscroll.min.js' %}"></script>
+        <script type="text/javascript" 
+                src="{% static 'js/jquery.mousewheel.min.js' %}"></script>
         {% endcompress %}
-        {% endcomment %}
     </body>
 </html>

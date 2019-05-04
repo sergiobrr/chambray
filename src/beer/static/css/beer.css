@@ -1,3 +1,41 @@
+#the_menu li.active {
+    text-decoration: underline;
+}
+
+#the_menu li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+#the_menu li.active a:hover {
+    color: #000;
+}
+
+#the_menu li:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+#the_menu li.active a {
+    font-weight: 800;
+}
+
+.the_menu-container {
+    position: fixed;
+    top: 20px;
+    left: 25%;
+    height: 40px;
+    z-index: 1050;
+    width: 50%;
+}
+
+#the_menu {
+    display: inline-flex;
+    list-style: none;
+}
+
 .beer-card-content {
     position: relative;
     padding-top: 110px;
@@ -30,6 +68,7 @@ div.beer-card-content svg {
 
 .beer-card-details p {
     font-size: 0.8rem;
+    padding: 15px;
 }
 
 .row-card-details {
@@ -104,24 +143,203 @@ div.beer-card-content svg {
 
 /* EXTRA SMALL DEVICES */
 
-@media(max-width:575px) {}
+@media(max-width:575px) {
+    .the_menu-container {
+        position: fixed;
+        top: 90px;
+        left: -40px;
+        height: 40px;
+        z-index: 1050;
+        width: calc(100vw + 50px);
+    }
+    .beer-card-details {
+        height: calc(100vh - 110px);
+        width: calc(100vw);
+        padding: 0 15px 0 15px;
+        position: relative;
+        margin: 0 0 0 0;
+    }
 
+    .row-card-details {
+        height: calc(100vh - 110px);
+        color: #000;
+    }
+
+    .beer-name {
+        color: #000 !important;
+    }
+
+    .beer-detail-col {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .padding-in-little-space {
+        padding: 10px 10px 10px 10px;
+    }
+    .fp-controlArrow.fp-prev {
+        display: none;
+    }
+    .fp-controlArrow.fp-next {
+        display: none;
+    }
+    .tap-little-image {
+        position: absolute;
+        left: 25px;
+        bottom: 45px;
+        width: 150px;
+        height: 150px;
+    }
+    .bottle-little-image {
+        position: absolute;
+        left: 70px;
+        bottom: 10px;
+        width: 55px;
+        height: 210px;
+    }
+    .right-if-little {
+        padding-left: 160px !important;
+    }
+
+}
 
 /* SMALL DEVICES */
 
-@media(min-width:576px) and (max-width:767px) {}
-
+@media(min-width:576px) and (max-width:767px) {
+    .the_menu-container {
+        position: fixed;
+        top: 40px;
+        left: -40px;
+        height: 40px;
+        z-index: 1050;
+        width: calc(100vw + 50px);
+    }
+    .row-card-details {
+        height: calc(100vh - 110px);
+        color: #000;
+    }
+    .beer-name {
+        color: #000 !important;
+    }
+    .beer-detail-col {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .beer-card-details p {
+        font-size: 1rem;
+        padding: 0px 15px 0px 15px !important;
+    }
+}
 
 /* MEDIUM DEVICES */
 
-@media(min-width:768px) and (max-width:991px) {}
+@media(min-width:768px) and (max-width:991px) {
+    .the_menu-container {
+        position: fixed;
+        top: 50px;
+        left: -40px;
+        height: 40px;
+        z-index: 1050;
+        width: calc(100vw + 50px);
+    }
+    
+    .beer-card-details {
+        height: calc(100vh - 110px);
+        width: calc(100vw);
+        padding: 0 15px 0 15px;
+        position: relative;
+        margin: 0 0 0 0;
+    }
 
+    .row-card-details {
+        height: calc(100vh - 110px);
+        color: #000;
+    }
+
+    .beer-name {
+        color: #000 !important;
+    }
+
+    .beer-detail-col {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .beer-card-details p {
+        font-size: 1rem;
+        padding: 0px 15px 0px 15px !important;
+        margin-bottom: 10px;
+    }
+    .tap-little-image {
+        margin-left: 20px;
+        width: 400px;
+        float: left;
+    }
+    .bottle-little-image {
+        margin-left: 20%;
+        float: left;
+        margin-right: 45px;
+    }
+    .eeeh {
+        margin-top: 150px;
+    }
+}
 
 /* LARGE DEVICES */
 
-@media(min-width:992px) and (max-width:1199px) {}
+@media(min-width:992px) and (max-width:1199px) {
+    .beer-name {
+        color: #000;
+    }
+    .beer-card-details {
+        height: calc(100vh - 110px);
+        width: calc(100vw);
+        padding: 0 15px 0 15px;
+        position: relative;
+        margin: 0 0 0 0;
+    }
+    div.beer-card-content svg {
+        position: absolute;
+        width: 95vw;
+        left: 2.5vw;
+        bottom: 0px;
+        z-index: -1;
+    }
+
+    .bottle-card-image {
+        position: absolute;
+        transform: rotate(-5deg);
+        left: 3vw;
+        bottom: 30px;
+        height: calc(100vh - 150px);
+        width: calc((100vh - 150px) / 3.8);
+    }
+    .beer-card-details p {
+        font-size: 1rem;
+        padding: 0px 15px 0px 15px !important;
+    }
+
+    .beer-info-col {
+        color: #000;
+        margin-top: 40px;
+    }
+
+    .tap-card-image {
+        position: absolute;
+        left: 30px;
+        top: -80px;
+        width: 300px;
+        height: 300px;
+        transform: rotate(-5deg);
+        z-index: 20;
+    }
+}
 
 
 /* EXTRA LARGE DEVICES */
 
-@media(min-width:1200px) {}
+@media(min-width:1200px) {
+    .beer-card-details p {
+        font-size: 0.8rem;
+        padding: 0px 15px 0px 15px !important;
+    }
+}

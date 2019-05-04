@@ -30,7 +30,7 @@
   {{ page.body|safe }}
 </div>
 
-<div class="owl-carousel lrd-hidden d-block d-sm-none">
+<div class="owl-carousel lrd-hidden d-block d-sm-none" id="home-carousel">
   {% for slide in page.get_collection_images %}
     {% image slide fill-400x1020 as slide_image_little %}
     <img data-src="{{ slide_image_little.url }}" alt="{{ slide.title }}"
@@ -61,6 +61,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/2.0.5/velocity.ui.min.js"></script>
 <script>
 $(document).ready(function(){
+  $(document).lockscroll(true);
+  $('.wrapper').mousewheel(function(el) {
+    return false;
+  });
   var logo_width = $('#logo-image').attr('width') + 'px';
   var carousel = $(".owl-carousel");
   carousel.on({

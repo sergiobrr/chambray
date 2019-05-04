@@ -1,3 +1,7 @@
+body {
+    max-height: 100vh;
+}
+
 h1,
 h2,
 h3,
@@ -66,6 +70,7 @@ body {
     min-height: 100vh;
     z-index: 1050;
     margin-right: 0px;
+    /* right: 350px; */
 }
 
 #main-sidebar.active {
@@ -123,7 +128,7 @@ li.social-item {
 }
 
 #content {
-    width: 100%;
+    width: 100vw;
     min-height: 100vh;
     transition: all 0.3s;
 }
@@ -168,54 +173,13 @@ ul.menu-list li {
     transition: all 0.4s ease;
 }
 
-div.ristretto img {
+div#home-carousel.ristretto img {
     width: calc(100vw - 500px);
     height: 100vh !important;
 }
 
 div.owl-carousel {
     transition: all 0.3s;
-}
-
-
-/* MENU SECTION */
-
-#the_menu li.active {
-    text-decoration: underline;
-}
-
-#the_menu li a {
-    text-decoration: none;
-    color: #000;
-    font-weight: 700;
-    margin-right: 8px;
-    font-size: 1.2rem;
-}
-
-#the_menu li.active a:hover {
-    color: #000;
-}
-
-#the_menu li:hover {
-    background: rgba(255, 255, 255, 0.8);
-}
-
-#the_menu li.active a {
-    font-weight: 800;
-}
-
-.the_menu-container {
-    position: fixed;
-    top: 20px;
-    left: 25%;
-    height: 40px;
-    z-index: 1050;
-    width: 50%;
-}
-
-#the_menu {
-    display: inline-flex;
-    list-style: none;
 }
 
 .li-divider {
@@ -272,6 +236,12 @@ p.credits a {
 
 #navbar_primary {
     height: 110px;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
 }
 
 #tagline {
@@ -305,9 +275,6 @@ p.credits a {
 /* EXTRA SMALL DEVICES */
 
 @media(max-width:575px) {
-    #content {
-        padding: 0 15px 0 15px;
-    }
     .owl-carousel {
         max-width: 575px !important;
     }
@@ -343,20 +310,22 @@ p.credits a {
     }
     #main-sidebar {
         margin-right: -0px;
-        padding-top: 25vh;
-        min-width: 350px;
-        max-width: 350px;
+        padding-top: 5vh;
+        min-width: 500px;
+        max-width: 500px;
     }
     #main-sidebar.active {
-        margin-right: -350px;
+        margin-right: calc(-100vw);
     }
     .little-logo {
         width: 60% !important;
         left: 20%;
-        border: 2px solid aqua;
     }
     .home-slide-medium {
         max-width: 767px !important;
+    }
+    .btn-navbar-toggler {
+        left: calc(100vw - 42px - 32px);
     }
 }
 
@@ -364,6 +333,9 @@ p.credits a {
 /* MEDIUM DEVICES */
 
 @media(min-width:768px) and (max-width:991px) {
+    #content {
+        padding: 0 15px 0 15px;
+    }
     .owl-carousel {
         max-width: 991px !important;
     }
@@ -374,6 +346,12 @@ p.credits a {
     .home-slide-medium {
         max-width: 991px !important;
         height: 100vh;
+    }
+    #main-sidebar {
+        margin-right: -0px;
+        padding-top: 25vh;
+        min-width: 500px;
+        max-width: 500px;
     }
 }
 

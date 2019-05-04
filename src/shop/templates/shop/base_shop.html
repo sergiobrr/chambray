@@ -22,6 +22,15 @@
 $(document).ready(function(){
 
   var toggleAll = function() {
+    if($('#content').hasClass('ristretto')) {
+      $('.wrapper').off('mousewhell');
+      $(document).lockscroll(false);
+    } else {
+      $('.wrapper').mousewheel(function(el) {
+        return false;
+      });
+      $(document).lockscroll(true);
+    }
     $('#content').toggleClass('ristretto');
     $('#main-sidebar').toggleClass('active');
   };
