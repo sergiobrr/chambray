@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^shop/', shop_landing_page_view, name='shop'),
     url(r'^search/$', search_views.search, name='search'),
+    url(r'^blog/', include('puput.urls')),
     url('^sitemap\.xml$', sitemap),
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in

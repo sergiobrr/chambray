@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'beer',
     'shop',
     'contact',
+    'blog',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -46,11 +47,15 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
     'wagtail.contrib.styleguide',
+    'wagtail.contrib.routable_page',
 
     'modelcluster',
     'taggit',
     'phonenumber_field',
     'colorful',
+    'django_social_share',
+    'puput',
+    'wagtailgeowidget',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -187,10 +192,14 @@ USE_TZ = True
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "chambray"
-
+# PUPUT
+PUPUT_USERNAME_FIELD = 'pk'
+PUPUT_USERNAME_REGEX = '.+'
+#MIGRATION_MODULES = {'puput': 'blog.puput_migrations'}
+# /PUPUT
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'http://www.lordchambray.com'
 
 WAGTAIL_CACHE = True
 

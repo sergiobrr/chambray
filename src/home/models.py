@@ -13,8 +13,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 from wagtail.snippets.models import register_snippet
 from django.utils.html import format_html
 from wagtail.core.models import Page, Orderable
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
-from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.search import index
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
@@ -60,8 +58,9 @@ class HomePage(Page):
 			return get_image_model().objects\
 				.filter(collection=self.image_collection)
 
-	parent_page_types = []
-	subpage_types = ['beer.BeerCategoryIndexPage', ]
+	parent_page_types = ['wagtailcore.page']
+	# subpage_types = ['beer.BeerCategoryIndexPage', ]
+	subpage_types = ['beer.BeerCategoryIndexPage', 'puput.BlogPage']
 
 
 @register_setting(icon='code')

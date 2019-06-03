@@ -1,17 +1,17 @@
 from django.db import models
 from wagtail.core.models import Page
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel,\
-	InlinePanel, FieldRowPanel
+	FieldRowPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.documents.edit_handlers import DocumentChooserPanel
-from wagtailmetadata.models import MetadataPageMixin, MetadataMixin
+from wagtailmetadata.models import MetadataPageMixin
 from colorful.fields import RGBColorField
 from modelcluster.models import ClusterableModel
-from modelcluster.fields import ParentalManyToManyField
 from chambray.base_models import AbstractBaseModel
 from chambray.utils import get_svg_content
 
 # Create your models here.
+
 
 class BeerCategory(AbstractBaseModel):
 	name = models.CharField(
