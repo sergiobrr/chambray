@@ -60,23 +60,6 @@ body {
     /* align-items: stretch; */
 }
 
-#main-sidebar {
-    padding-top: 25vh;
-    min-width: 500px;
-    max-width: 500px;
-    background: #002b96;
-    color: #fff;
-    transition: all 0.3s;
-    min-height: 100vh;
-    z-index: 1050;
-    margin-right: 0px;
-    /* right: 350px; */
-}
-
-#main-sidebar.active {
-    margin-right: -500px;
-}
-
 #main-sidebar .sidebar-header {
     padding: 20px;
     background: #6d7fcc;

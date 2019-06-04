@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 {% compress css %}
 <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endcompress %}
 {% endblock extra_css %}
 
@@ -24,11 +25,6 @@
 {% image page.logo_image original as the_logo %}
 <img {{ the_logo.attrs }} class="big-logo d-none d-lg-block" id="logo-image" alt="lord chambray logo"
     style="left: calc((100vw - {{ the_logo.width }}px) / 2); top:calc((70vh - {{ the_logo.height }}px)/2);">
-
-<div id="tagline" class="d-none d-lg-block text-center"
-    style="bottom: 10vh;">
-  {{ page.body|safe }}
-</div>
 
 <div class="owl-carousel lrd-hidden d-block d-sm-none" id="home-carousel">
   {% for slide in page.get_collection_images %}

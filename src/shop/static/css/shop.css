@@ -1,4 +1,18 @@
+#main-sidebar {
+    padding-top: 25vh;
+    min-width: 500px;
+    max-width: 500px;
+    background: #002b96;
+    color: #fff;
+    transition: all 0.3s;
+    min-height: 100vh;
+    z-index: 1050;
+    margin-right: 0;
+}
 
+#main-sidebar.active {
+    margin-right: -500px;
+}
 .shop-title {
 	font-weight: 800;
 }

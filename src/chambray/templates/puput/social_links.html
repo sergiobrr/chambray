@@ -1,0 +1,21 @@
+{% load blog_tags %}
+{% get_social_links as the_links %}
+<div class="row social-links-row">
+    <ul class="social-share col-md-9">
+        <li class="social-item">
+            <a href="{{ the_links.facebook }}" style="padding: 0 0 0 0;">
+                <i class="fab fa-facebook fa-2x" style="color: #002b96"></i>
+            </a>
+        </li>
+        <li class="social-item">
+            <a href="{{ the_links.twitter }}" style="padding: 0 0 0 0;">
+                <i class="fab fa-twitter fa-2x" style="color: #002b96"></i>
+            </a>
+        </li>
+        <li class="social-item">
+            <a href="{{ the_links.instagram }}" style="padding: 0 0 0 0;">
+                <i class="fab fa-instagram fa-2x" style="color: #002b96"></i>
+            </a>
+        </li>
+    </ul>
+ </div>

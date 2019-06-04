@@ -1,0 +1,21 @@
+#main-sidebar {
+    padding-top: 25vh;
+    min-width: 500px;
+    max-width: 500px;
+    background: #002b96;
+    color: #fff;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    min-height: 100vh;
+    z-index: 1050;
+    margin-right: 0;
+    right: 250px;
+}
+
+#main-sidebar.active {
+    margin-right: -500px;
+    right: 0 !important;
+}

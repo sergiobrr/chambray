@@ -1,0 +1,17 @@
+{% load social_share %}
+<div class="row social-row">
+    <ul class="social-share col-md-9">
+        <li class="social-item">
+            {% post_to_facebook post_url '<span><i class="fab fa-facebook-square fa-2x" style="color: #002b96"></i></span>' %}
+        </li>
+        <li class="social-item">
+            {% post_to_twitter entry.title post_url '<span><i class="fab fa-twitter-square fa-2x" style="color: #002b96"></i></span>' %}
+        </li>
+        <li class="social-item">
+            {% post_to_linkedin entry.title post_url '<span><i class="fab fa-linkedin fa-2x" style="color: #002b96"></i></span>' %}
+        </li>
+        <li class="social-item">
+            {% post_to_gplus post_url '<span><i class="fab fa-google-plus-square fa-2x" style="color: #002b96"></i></span>' %}
+        </li>
+    </ul>
+ </div>

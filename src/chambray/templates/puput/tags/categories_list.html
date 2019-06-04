@@ -1,0 +1,17 @@
+{% load i18n wagtailroutablepage_tags %}
+
+<h3 class="text-center">
+  {% if categories %}
+  <span class="isofilter isoactive" id="*">
+    #All
+  </span>
+  {% endif %}
+  {% for category in categories %}
+  / <span class="isofilter"
+    id=".{{ category.slug }}">
+    #{{ category.name }}
+  </span>
+  {% empty %}
+    {% trans 'No categories yet' %}
+  {% endfor %}
+</h3>

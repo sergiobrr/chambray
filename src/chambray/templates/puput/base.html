@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static snippettags i18n wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags wagtailuserbar puput_tags compress %}
+
+{% block extra_css %}
+<style>
+  body {
+    --main-color: {{blog_page.main_color}};
+  }
+</style>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+{% compress css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/new.css' %}">
+{% endcompress %}
+{% endblock extra_css %}
+
+{% block body_class %}{% endblock %}
+
+{% block content %}
+  {% include 'navbar_primary.html' %}
+  <div class="detail-container">
+    {% block content_detail %}
+    {% endblock content_detail %}
+  </div>
+  {% render_basesnippet identifier='footer' %}
+{% endblock content %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+{% compress js %}
+<script src="{% static 'js/new.js' %}"></script>
+{% endcompress %}
+<script>
+$(document).ready(function(){
+
+  var toggleAll = function() {
+    if($('#content').hasClass('ristretto')) {
+      $('.wrapper').off('mousewhell');
+      $(document).lockscroll(false);
+    } else {
+      $('.wrapper').mousewheel(function(el) {
+        return false;
+      });
+      $(document).lockscroll(true);
+    }
+    $('#content').toggleClass('ristretto');
+    $('#main-sidebar').toggleClass('active');
+  };
+
+  $('#sidebarCollapse').on('click',function(){
+    toggleAll();
+  });
+
+  $('#closer-btn').on('click',function(){
+    toggleAll();
+  });
+
+});
+</script>
+  {% block extrascript %}
+  {% endblock extrascript %}
+{% endblock extra_js %}

@@ -1,3 +1,19 @@
+#main-sidebar {
+    padding-top: 25vh;
+    min-width: 500px;
+    max-width: 500px;
+    background: #002b96;
+    color: #fff;
+    transition: all 0.3s;
+    min-height: 100vh;
+    z-index: 1050;
+    margin-right: 0;
+}
+
+#main-sidebar.active {
+    margin-right: -500px;
+}
+
 #the_menu li.active {
     text-decoration: underline;
 }
@@ -341,5 +357,10 @@ div.beer-card-content svg {
     .beer-card-details p {
         font-size: 0.8rem;
         padding: 0px 15px 0px 15px !important;
+    }
+
+    div.beer-detail-col p {
+        margin-bottom: 5px;
+        
     }
 }

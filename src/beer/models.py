@@ -278,21 +278,21 @@ class BeerCategoryIndexPage(MetadataPageMixin, Page):
 
 
 class BeerCategoryPage(MetadataPageMixin, Page):
- 	category = models.ForeignKey(
- 		BeerCategory,
- 		null=True,
- 		blank=True,
- 		on_delete=models.SET_NULL,
- 		verbose_name='Page for category:'
+	category = models.ForeignKey(
+		BeerCategory,
+		null=True,
+		blank=True,
+		on_delete=models.SET_NULL,
+		verbose_name='Page for category:'
 	)
- 	parent_page_types = ['beer.BeerCategoryIndexPage', ]
- 	content_panels = Page.content_panels + [
- 		FieldPanel('category'), 
- 	]
- 	subpage_types = ['beer.BeerPage', ]
+	parent_page_types = ['beer.BeerCategoryIndexPage', ]
+	content_panels = Page.content_panels + [
+		FieldPanel('category'),
+	]
+	subpage_types = ['beer.BeerPage', ]
 
- 	def get_dict(self):
- 		return self.__dict__
+	def get_dict(self):
+		return self.__dict__
 
 
 class BeerPage(Page):
